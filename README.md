@@ -1,2 +1,2 @@
 # Fourier-transform
-Fourier transforms code for gappy (intervalized) signals.
+Fourier transform code for gappy (intervalized) signals.
