@@ -106,14 +106,6 @@ ax.grid()
 ax.set_xlim(0,55)
 ```
 
-
-
-
-    (0.0, 55.0)
-
-
-
-
 ![png](fig/output_13_1.png)
 
 
@@ -151,13 +143,6 @@ ax.set_xlim(0,65)
 ```
 
 
-
-
-    (0.0, 65.0)
-
-
-
-
 ![png](fig/output_18_1.png)
 
 
@@ -181,20 +166,9 @@ ax.set_xlim(0,65)
 ```
 
 
-
-
-    (0.0, 65.0)
-
-
-
-
 ![png](fig/output_21_1.png)
 
 
-
-```python
-
-```
 
 ## Compute both the interval bounds (BI) and the selective bounds (BS).
 
@@ -282,12 +256,12 @@ An visual inspection can be used to verify the rigour of the bounds for each fre
 
 
 ```python
-impdft.plotSpectrumBounds2x2(AA,signal,u)
+impdft.plot_spectrum_bounds_2x2(AA,signal,u)
 ```
 
 
 ```python
-impdft.plot_CH_2x2(intervalsignal_arr,freq=[2,3,4,5],figsize=(15,15),aspect='equal')
+impdft.plot_ch_2x2(intervalsignal_arr,freq=[2,3,4,5],figsize=(15,15),aspect='equal')
 ```
 
 
