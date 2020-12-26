@@ -22,7 +22,7 @@ arXiv preprint [arXiv:2012.09778].
 
 # How to use the code library
 
-## Import the *gappy* Fourier transform package
+### Import the *gappy Fourier transform* package
 
 
 ```python
@@ -48,12 +48,12 @@ gappyFT.plot_signal(signal,lw=1,title='Signal from stationary power spectrum',co
 ![png](fig/output_4_0.png)
 
 
-## Imprecise signal
+## Intervalize the signal
 Let us add $\pm$1 interval uncertainty to the time signal. 
 
 
 ```python
-intervalsignal = gappyFT.intervalize(signal, plusminus=1.0) # output an interval vector
+intervalsignal = gappyFT.intervalize(signal, plusminus=1.0) # outputs an interval vector
 ```
 
 
@@ -61,74 +61,245 @@ intervalsignal = gappyFT.intervalize(signal, plusminus=1.0) # output an interval
 print(intervalsignal)
 ```
 
-    【3.36318, 5.36318】
-    【2.99323, 4.99323】
-    【1.63038, 3.63038】
-    【3.75561, 5.75561】
-    【7.92647, 9.92647】
+    【-2.36916, -0.36916】
+    【1.20444, 3.20444】
+    【6.66901, 8.66901】
+    【3.45785, 5.45785】
+    【3.17543, 5.17543】
     ...
-    【9.78841, 11.7884】
-    【7.05103, 9.05103】
-    【2.27956, 4.27956】
-    【-1.87866, 0.121342】
+    【3.23294, 5.23294】
+    【-1.76045, 0.239546】
+    【-5.23176, -3.23176】
+    【-6.72218, -4.72218】
 
+
+Interval vectors have support for plotting as shown in the next cell.
 
 
 ```python
 intervalsignal.plot\
-(xlabel=r'#$[x]$',ylabel=r'[x]',title=r'Signal with $\pm$ 1.0 info gaps')
+(xlabel=r'#$[x]$',ylabel=r'[x]',title=r'Signal with $\pm$ 1.0 information gaps (intervals)')
 ```
 
 
-![png](fig/output_8_0.png)
+![png](fig/output_9_0.png)
+
+
+## Pick out a signal within the bounds
+
+Any signal within the interval bounds is allowed. So let's generate a few signals using the `IntervalSignal` API.
+
+
+```python
+RAND_SIGNALS = intervalsignal.rand(N=4) # this picks out N (inner) random signals within the bounds
+```
+
+### Let's plot the `N` randomly generated signals withint the bounds over the interval signal
+
+
+```python
+fig,ax = gappyFT.subplots(figsize=(16,8))
+for rs in RAND_SIGNALS:
+    gappyFT.plot_signal(rs,ax=ax)
+intervalsignal.plot(ax=ax)
+ax.grid()
+ax.set_xlim(0,55)
+```
+
+
+
+
+    (0.0, 55.0)
+
+
+
+
+![png](fig/output_13_1.png)
+
+
+## We are now ready to compute the amplitude of the *gappy* signal
+
+We can do so using the polymorphic `Fourier_amplitude` function, which accepts both a precise and interval signal. 
+
+However the bounds that we obtain, as shown in the following figure, are quite puffy.
+
+
+```python
+FA = gappyFT.Fourier_amplitude(signal)
+IFA= gappyFT.Fourier_amplitude(intervalsignal)
+```
+
+Let's plot the obtained bounds against some inner generated signals
+
+
+```python
+FA_rand1 = gappyFT.Fourier_amplitude(intervalsignal.rand())
+FA_rand2 = gappyFT.Fourier_amplitude(intervalsignal.rand())
+FA_rand3 = gappyFT.Fourier_amplitude(intervalsignal.rand())
+```
+
+
+```python
+fig,ax = gappyFT.subplots(figsize=(16,8))
+gappyFT.IntervalVector(IFA).plot(ax=ax,alpha=0.1)
+gappyFT.plot_signal(FA,ax=ax,lw=3)
+gappyFT.plot_signal(FA_rand1,ax=ax)
+gappyFT.plot_signal(FA_rand2,ax=ax)
+gappyFT.plot_signal(FA_rand3,ax=ax)
+ax.grid()
+ax.set_xlim(0,65)
+```
+
+
+
+
+    (0.0, 65.0)
+
+
+
+
+![png](fig/output_18_1.png)
+
+
+We can even plot more inner signals using the `IntervalSignal` API and a loop
+
+
+```python
+RAND_SIGNALS = intervalsignal.rand(N=20) 
+```
+
+
+```python
+fig,ax = gappyFT.subplots(figsize=(16,8))
+gappyFT.IntervalVector(IFA).plot(ax=ax,alpha=0.1)
+gappyFT.plot_y(FA,ax=ax,lw=3)
+for rs in RAND_SIGNALS:
+    FA_r = gappyFT.Fourier_amplitude(rs) # computes amplitude for each generated signal
+    gappyFT.plot_y(FA_r,ax=ax) # plots amplitude of randomly generated signal
+ax.grid()
+ax.set_xlim(0,65)
+```
+
+
+
+
+    (0.0, 65.0)
+
+
+
+
+![png](fig/output_21_1.png)
 
 
 
 ```python
-FA = gappyFT.compute_amplitude(signal)
+
 ```
+
+## Compute both the interval bounds (BI) and the selective bounds (BS).
+
+The single function `compute_amplitude_bounds` will compute and output both bounds.
 
 
 ```python
-gappyFT.plot_signal(FA)
+BI,BS = gappyFT.compute_amplitude_bounds(intervalsignal) # this can take a bit
 ```
 
-
-![png](fig/output_10_0.png)
-
-
-
-# Compute the interval amplitude spectrum
-
-`compute_spectrum_bounds` outputs two arrays:
-
-* array 1 : amplitude bounds with enclosing box method
-
-* array 2 : amplitude bounds with selective method
+Let's plot the results
 
 
 ```python
-AMPLITUDE_I, AMPLITUDE_H = gappyFT.compute_amplitude_bounds(intervalsignal)
-```
-
-
-```python
-from matplotlib import pyplot
-fig, ax = pyplot.subplots(figsize=(16,8))
-AMPLITUDE_I.plot(ax=ax)
-AMPLITUDE_H.plot(ax=ax)
-ax.set_title('Comparing interval amplitude spectra', fontsize=20)
+fig,ax = gappyFT.subplots(figsize=(20,8))
+# gappyFT.IntervalVector(IFA).plot(ax=ax,alpha=0.1)
+gappyFT.IntervalVector(BI).plot(ax=ax,alpha=0.1,marker='',label='Interval')
+gappyFT.IntervalVector(BS).plot(ax=ax,alpha=0.1,marker='',label='Selective')
+gappyFT.plot_y(FA,ax=ax,lw=3)
+for rs in RAND_SIGNALS:
+    FA_r = gappyFT.Fourier_amplitude(rs) # computes amplitude for each generated signal
+    gappyFT.plot_y(FA_r,ax=ax) # plots amplitude of randomly generated signal
+gappyFT.plot_y(FA_r,ax=ax,label = 'Inner random') # this line is only for legend purposes
+ax.set_title('Amplitude bounds vs random amplidutes',fontsize=20)
+ax.set_xlabel('# Frequency')
+ax.set_ylabel(r'$|z|$')
+ax.legend(fontsize=20)
 ax.grid()
 ```
 
 
-![png](fig/output_19_0.png)
+![png](fig/output_26_0.png)
+
+
+## Verification of results
+
+The library enables also the verification of results for given frequencies.
+
+An visual inspection can be used to verify the rigour of the bounds for each frequency.
 
 
 ```python
-gappyFT.plot_verify_ch(intervalsignal,freq=[2,3,4,5],figsize=(15,15),aspect='equal')
+
 ```
 
 
-![png](fig/output_22_0.png)
+```python
 
+```
+
+
+```python
+
+```
+
+
+```python
+
+```
+
+
+```python
+
+```
+
+
+```python
+
+```
+
+
+```python
+
+```
+
+
+```python
+
+```
+
+
+```python
+
+```
+
+
+```python
+impdft.plotSpectrumBounds2x2(AA,signal,u)
+```
+
+
+```python
+impdft.plot_CH_2x2(intervalsignal_arr,freq=[2,3,4,5],figsize=(15,15),aspect='equal')
+```
+
+
+![png](fig/output_38_0.png)
+
+
+
+```python
+
+```
+
+
+```python
+
+```
