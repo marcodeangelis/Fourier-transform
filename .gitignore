@@ -4,7 +4,10 @@ __pycache__/
 *$py.class
 
 # virtual environments
-dftvenv
+venvdft
+
+# Mac files
+.DS_Store
 
 # C extensions
 *.so
