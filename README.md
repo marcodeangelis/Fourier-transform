@@ -5,9 +5,9 @@ This code implements the idea developed in the paper:
 
 *Forward interval propagation through the Fourier discrete transform*. 
 M De Angelis, M Behrendt, L Comerford, Y Zhang, M Beer; 
-arXiv preprint [arXiv:2012.09778].
+arXiv preprint [https://arxiv.org/abs/2012.09778].
 
-[https://arxiv.org/abs/2012.09778]: arXiv:2012.09778
+[https://arxiv.org/abs/2012.09778]: https://arxiv.org/abs/2012.09778
 
 ```latex
 @misc{deangelis2020forward,
