@@ -11,7 +11,7 @@ arXiv preprint [https://arxiv.org/abs/2012.09778].
 To cite this code use the BibTex reference below. 
 
 ```latex
-@misc{deangelis2020forward,
+@misc{deangelisfourier2020,
       title={Forward interval propagation through the discrete Fourier transform}, 
       author={Marco De Angelis and Marco Behrendt and Liam Comerford and Yuanjin Zhang and Michael Beer},
       year={2020},
