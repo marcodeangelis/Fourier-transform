@@ -230,30 +230,10 @@ gappyFT.verify_selective_with_plot(intervalsignal,[63,64,65,66,67,68,69,70,71,72
 ```
 
 
-<<<<<<< HEAD
 ![png](output_31_0.png)
 
-=======
-```python
-impdft.plot_spectrum_bounds_2x2(AA,signal,u)
-```
-
-
-```python
-impdft.plot_ch_2x2(intervalsignal_arr,freq=[2,3,4,5],figsize=(15,15),aspect='equal')
-```
-
-
-![png](fig/output_38_0.png)
-
 
 
 ```python
 
 ```
-
-
-```python
-
-```
->>>>>>> 4a05450cfa833813cba235721556cd7f08b56837
