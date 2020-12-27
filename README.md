@@ -108,7 +108,7 @@ for rs in RAND_SIGNALS:
     gappyFT.plot_signal(rs,ax=ax)
 intervalsignal.plot(ax=ax)
 ax.grid()
-ax.set_xlim(0,55)
+_=ax.set_xlim(0,55) # underscore here is used to suppress the output of this line
 ```
 
 ![png](fig/output_13_1.png)
@@ -144,7 +144,7 @@ gappyFT.plot_signal(FA_rand1,ax=ax)
 gappyFT.plot_signal(FA_rand2,ax=ax)
 gappyFT.plot_signal(FA_rand3,ax=ax)
 ax.grid()
-ax.set_xlim(0,65)
+_=ax.set_xlim(0,65)
 ```
 
 
@@ -167,7 +167,7 @@ for rs in RAND_SIGNALS:
     FA_r = gappyFT.Fourier_amplitude(rs) # computes amplitude for each generated signal
     gappyFT.plot_y(FA_r,ax=ax) # plots amplitude of randomly generated signal
 ax.grid()
-ax.set_xlim(0,65)
+_=ax.set_xlim(0,65)
 ```
 
 
