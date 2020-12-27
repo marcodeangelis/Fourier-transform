@@ -1,5 +1,4 @@
-# Fourier-transform
-Fourier transform code for gappy (intervalized) signals.
+# Fourier transform code for intervalized (gappy) signals.
 
 This code implements the idea developed in the paper:
 
