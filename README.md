@@ -11,8 +11,8 @@ arXiv preprint [https://arxiv.org/abs/2012.09778].
 To cite this code use the BibTex reference below. 
 
 ```latex
-@misc{deangelis2020forward,
-      title={Forward interval propagation through the Fourier discrete transform}, 
+@misc{deangelisfourier2020,
+      title={Forward interval propagation through the discrete Fourier transform}, 
       author={Marco De Angelis and Marco Behrendt and Liam Comerford and Yuanjin Zhang and Michael Beer},
       year={2020},
       eprint={2012.09778},
@@ -31,7 +31,7 @@ The code contained in this library will be available soon.
 
 
 ```python
-from lib.fourier import transform as gappyFT
+from fourier.transform import transform as gappyFT
 ```
 
 ### Generate a signal from a stationary power spectrum
@@ -108,7 +108,7 @@ for rs in RAND_SIGNALS:
     gappyFT.plot_signal(rs,ax=ax)
 intervalsignal.plot(ax=ax)
 ax.grid()
-ax.set_xlim(0,55)
+_=ax.set_xlim(0,55) # underscore here is used to suppress the output of this line
 ```
 
 ![png](fig/output_13_1.png)
@@ -116,23 +116,23 @@ ax.set_xlim(0,55)
 
 ## We are now ready to compute the amplitude of the *gappy* signal
 
-We can do so using the polymorphic `Fourier_amplitude` function, which accepts both a precise and interval signal. 
+We can do so using the polymorphic `Fourier_amplitude` function, which accepts both a precise and interval signal, and returns a Python list of (interval) amplitudes.
 
-However the bounds that we obtain, as shown in the following figure, are quite puffy.
+Whith the interval signal the bounds that we obtain, as shown in the following figure, are quite puffy. 
 
 
 ```python
-FA = gappyFT.Fourier_amplitude(signal)
-IFA= gappyFT.Fourier_amplitude(intervalsignal)
+FA = gappyFT.Fourier_amplitude(signal) # outputs a Python list of floats
+IFA= gappyFT.Fourier_amplitude(intervalsignal) # outputs a Python list of Intervals
 ```
 
 Let's plot the obtained bounds against some inner generated signals
 
 
 ```python
-FA_rand1 = gappyFT.Fourier_amplitude(intervalsignal.rand())
-FA_rand2 = gappyFT.Fourier_amplitude(intervalsignal.rand())
-FA_rand3 = gappyFT.Fourier_amplitude(intervalsignal.rand())
+FA_rand1 = gappyFT.Fourier_amplitude(intervalsignal.rand()) # outputs a Python list of floats
+FA_rand2 = gappyFT.Fourier_amplitude(intervalsignal.rand()) # outputs a Python list of floats
+FA_rand3 = gappyFT.Fourier_amplitude(intervalsignal.rand()) # outputs a Python list of floats
 ```
 
 
@@ -144,7 +144,7 @@ gappyFT.plot_signal(FA_rand1,ax=ax)
 gappyFT.plot_signal(FA_rand2,ax=ax)
 gappyFT.plot_signal(FA_rand3,ax=ax)
 ax.grid()
-ax.set_xlim(0,65)
+_=ax.set_xlim(0,65)
 ```
 
 
@@ -167,7 +167,7 @@ for rs in RAND_SIGNALS:
     FA_r = gappyFT.Fourier_amplitude(rs) # computes amplitude for each generated signal
     gappyFT.plot_y(FA_r,ax=ax) # plots amplitude of randomly generated signal
 ax.grid()
-ax.set_xlim(0,65)
+_=ax.set_xlim(0,65)
 ```
 
 
