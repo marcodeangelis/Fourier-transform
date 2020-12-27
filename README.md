@@ -31,7 +31,7 @@ The code contained in this library will be available soon.
 
 
 ```python
-from lib.fourier import transform as gappyFT
+from fourier.transform import transform as gappyFT
 ```
 
 ### Generate a signal from a stationary power spectrum
