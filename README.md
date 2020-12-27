@@ -116,9 +116,9 @@ ax.set_xlim(0,55)
 
 ## We are now ready to compute the amplitude of the *gappy* signal
 
-We can do so using the polymorphic `Fourier_amplitude` function, which accepts both a precise and interval signal. 
+We can do so using the polymorphic `Fourier_amplitude` function, which accepts both a precise and interval signal, and returns a Python list of (interval) amplitudes.
 
-However the bounds that we obtain, as shown in the following figure, are quite puffy.
+Whith the interval signal the bounds that we obtain, as shown in the following figure, are quite puffy. 
 
 
 ```python
