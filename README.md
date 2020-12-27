@@ -12,7 +12,7 @@ To cite this code use the BibTex reference below.
 
 ```latex
 @misc{deangelis2020forward,
-      title={Forward interval propagation through the Fourier discrete transform}, 
+      title={Forward interval propagation through the discrete Fourier transform}, 
       author={Marco De Angelis and Marco Behrendt and Liam Comerford and Yuanjin Zhang and Michael Beer},
       year={2020},
       eprint={2012.09778},
