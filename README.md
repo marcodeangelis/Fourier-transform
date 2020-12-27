@@ -3,11 +3,13 @@ Fourier transform code for gappy (intervalized) signals.
 
 This code implements the idea developed in the paper:
 
-*Forward interval propagation through the Fourier discrete transform*. 
+*Forward interval propagation through the discrete Fourier transform*. 
 M De Angelis, M Behrendt, L Comerford, Y Zhang, M Beer; 
 arXiv preprint [arXiv:2012.09778].
 
 [https://arxiv.org/abs/2012.09778]: arXiv:2012.09778
+
+To cite this code use the BibTex reference below. 
 
 ```latex
 @misc{deangelis2020forward,
@@ -19,6 +21,10 @@ arXiv preprint [arXiv:2012.09778].
       primaryClass={eess.SP}
 }
 ```
+*Disclaimer:* This code was developed for illustration purposes and for proof-of-concept. Thus this code is not optimized for large-scale applications. An otimized version of the code is currently under development.
+
+## How to install the library
+The code contained in this library will be available soon.
 
 # How to use the code library
 
@@ -237,69 +243,18 @@ An visual inspection can be used to verify the rigour of the bounds for each fre
 
 
 ```python
-
+gappyFT.verify_selective_with_plot(intervalsignal,[3,4,5,6,7,8,9,10,11,12,13,14],aspect='equal',figsize=(30,20))
 ```
 
 
-```python
-
-```
-
-
-```python
-
-```
-
-
-```python
-
-```
-
-
-```python
-
-```
-
-
-```python
-
-```
-
-
-```python
-
-```
-
-
-```python
-
-```
-
-
-```python
-
-```
-
-
-```python
-impdft.plotSpectrumBounds2x2(AA,signal,u)
-```
-
-
-```python
-impdft.plot_CH_2x2(intervalsignal_arr,freq=[2,3,4,5],figsize=(15,15),aspect='equal')
-```
-
-
-![png](fig/output_38_0.png)
+![png](output_30_0.png)
 
 
 
 ```python
-
+gappyFT.verify_selective_with_plot(intervalsignal,[63,64,65,66,67,68,69,70,71,72,73,74],aspect='equal',figsize=(30,20))
 ```
 
 
-```python
+![png](output_31_0.png)
 
-```
