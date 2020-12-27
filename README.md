@@ -122,17 +122,17 @@ Whith the interval signal the bounds that we obtain, as shown in the following f
 
 
 ```python
-FA = gappyFT.Fourier_amplitude(signal)
-IFA= gappyFT.Fourier_amplitude(intervalsignal)
+FA = gappyFT.Fourier_amplitude(signal) # outputs a Python list of floats
+IFA= gappyFT.Fourier_amplitude(intervalsignal) # outputs a Python list of Intervals
 ```
 
 Let's plot the obtained bounds against some inner generated signals
 
 
 ```python
-FA_rand1 = gappyFT.Fourier_amplitude(intervalsignal.rand())
-FA_rand2 = gappyFT.Fourier_amplitude(intervalsignal.rand())
-FA_rand3 = gappyFT.Fourier_amplitude(intervalsignal.rand())
+FA_rand1 = gappyFT.Fourier_amplitude(intervalsignal.rand()) # outputs a Python list of floats
+FA_rand2 = gappyFT.Fourier_amplitude(intervalsignal.rand()) # outputs a Python list of floats
+FA_rand3 = gappyFT.Fourier_amplitude(intervalsignal.rand()) # outputs a Python list of floats
 ```
 
 
