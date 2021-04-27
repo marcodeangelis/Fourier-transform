@@ -1,7 +1,7 @@
 
 """
-    Created on Sept 2019
-    @author: Marco De Angelis
+    Created September 2019
+    Author: Marco De Angelis
     University of Liverpool
     github.com/marcodeangelis
     GNU LGPL v3.0
@@ -10,10 +10,8 @@
 
     This code lives at: https://github.com/marcodeangelis/Fourier-transform
 
-    If you use this code in your work/research please acknowledge the research paper. 
-    The research paper can be accessed at: https://arxiv.org/abs/2012.09778
-
-    You can use this code according to the GNU LGPL v3.0 license agreement. 
+    If you use this code in your work/research and want to cite it, you can cite  
+    the research paper at: https://arxiv.org/abs/2012.09778
 """
 
 import numpy
