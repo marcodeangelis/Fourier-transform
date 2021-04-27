@@ -22,12 +22,12 @@ To cite this code use the BibTex reference below.
 ```
 *Disclaimer:* This code was developed for illustration purposes and for proof-of-concept. Thus this code is not optimized for large-scale applications. An otimized version of the code is currently under development.
 
-## How to install the library
+# Installation
 The code contained in this library will be available soon.
 
-# How to use the code library
+## How to use the code
 
-### Import the *gappy Fourier transform* package
+### Import the *interval Fourier transform* package
 
 
 ```python
@@ -96,7 +96,7 @@ Any signal within the interval bounds is allowed. So let's generate a few signal
 
 
 ```python
-RAND_SIGNALS = intervalsignal.rand(N=4) # this picks out N (inner) random signals within the bounds
+RAND_SIGNALS = intervalsignal.rand(N=100) # this picks out N (inner) random signals within the bounds
 ```
 
 ### Let's plot the `N` randomly generated signals withint the bounds over the interval signal
