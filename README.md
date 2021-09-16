@@ -22,10 +22,8 @@ To cite this code use the BibTex reference below.
 ```
 *Disclaimer:* This code was developed for illustration purposes and for proof-of-concept. Thus this code is not optimized for large-scale applications. An otimized version of the code is currently under development.
 
-# Installation
-The code contained in this library will be available soon.
-
-## How to use the code
+## Installation and use
+Clone the git repository on your machine, `cd` to the repository, open a Python3 interpreter and follow the steps below.
 
 ### Import the *interval Fourier transform* package
 
